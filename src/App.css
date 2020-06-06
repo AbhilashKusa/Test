@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+.image {
+  background-image: url(./images/mainpageimg.png);
+  width: "250px";
+  backgroundrepeat: "no-repeat";
+  width: "auto";
+  height: "600px";
+  color: "black";
+}
+
+#cardstyle {
+  width: 18rem;
+}
+.cardetails {
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+.mainpage {
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+  padding-top: 20%;
+  font-family: "Poppins", sans-serif;
+}
+.heading > b {
+  font-weight: 900;
+  font-size: 70px;
+  font-family: "Poppins", sans-serif;
+}
+#about {
+  background-color: #5d414d;
+  overflow: hidden;
+}
+.about-grid {
+  display: grid;
+  grid-template-rows: repeat(1fr, 2);
+  gap: 10px;
+}
+.div1 {
+  grid-column: 1 / span 3;
+}
+#formval {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  font-size: medium;
+  font-weight: bold;
+  background-color: #0e3150;
+}
+#Main-details {
+  opacity: 0;
+}
