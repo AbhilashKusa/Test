@@ -1,136 +1,44 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import ErrorMessage from "./ErrorMessage";
 
 export default function Formvalidation() {
-  const {
-    register,
-    handleSubmit,
-    errors,
-    setError,
-    clearError,
-    formState: { isSubmitting },
-  } = useForm();
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
-  };
-  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  const validateUserName = async (value) => {
-    await sleep(1000);
-    if (value !== "bill") {
-      setError("username", "validate");
-    } else {
-      clearError("username");
-    }
-  };
+  const submit=()=>{
+    alert(formdata.name);
+  }
+  const [formdata, setformdata] = useState({
+    name: "",
+    email: "",
+  });
 
   return (
-    <div className="container">
-      <div>
-        <form
-          className="App"
-          onSubmit={handleSubmit(onSubmit)}
-          id="formval"
-          className="form-group"
-        >
-          <h1>Sign Up</h1>
-          <label>First Name:</label>
-          <div className="form-group">
-            <input
-              className="form-control"
-              name="firstName"
-              ref={register({
-                required: true,
-              })}
-            />
-          </div>
-          <ErrorMessage error={errors.firstName} />
-
-          <label>Last Name:</label>
-          <div className="form-group">
-            <input
-              className="form-control"
-              name="lastName"
-              ref={register({
-                required: true,
-                minLength: 2,
-              })}
-            />
-          </div>
-          <ErrorMessage error={errors.firstName} />
-
-          <label>Gender</label>
-          <div className="form-group">
-            <select
-              name="gender"
-              ref={register({
-                required: true,
-              })}
-            >
-              <option value="" className="form-control">
-                Select...
-              </option>
-              <option value="male" className="form-control">
-                Male
-              </option>
-              <option value="female" className="form-control">
-                Female
-              </option>
-            </select>
-          </div>
-          <ErrorMessage error={errors.gender} />
-
-          <label>Username</label>
-          <div className="form-group">
-            <input
-              className="form-control"
-              name="username"
-              onBlur={(e) => validateUserName(e.target.value)}
-              ref={register({
-                required: true,
-                validate: validateUserName,
-              })}
-            />
-          </div>
-          <ErrorMessage error={errors.username} />
-
-          <label>Email</label>
-          <div className="form-group">
-            <input
-              className="form-control"
-              name="email"
-              ref={register({
-                required: true,
-                pattern: /^\S+@\S+$/i,
-              })}
-            />
-          </div>
-          <ErrorMessage error={errors.email} />
-
-          <label>Age</label>
-          <div className="form-group">
-            <input
-              className="form-control"
-              name="age"
-              type="number"
-              ref={register({
-                required: true,
-                min: 18,
-              })}
-            />
-          </div>
-          <ErrorMessage error={errors.age} />
-
-          <label>About you</label>
-          <textarea name="aboutyou" ref={register} />
-
+    <>
+      <h3 className="bold pt-3 text-center">ENTER DETAILS</h3>
+      <div className="container">
+        <div className="form-group">
           <input
-            disabled={isSubmitting}
-            type="submit"
-            className="form-control bg bg-success text-white"
+            class="form-control m-2"
+            type="text"
+            placeholder="Type yo see Name✔"
+            onChange={(e) => {
+              setformdata({
+                name: e.target.value,
+              });
+            }}
           />
-        </form>
+          <p className="text-center">{formdata.name}</p>
+          <input
+            class="form-control m-2"
+            type="email"
+            placeholder="Enter your 📨 to 👁"
+            onChange={(e) => {
+              setformdata({
+                email: e.target.value,
+              });
+            }}
+          />
+          <p className="text-center">{formdata.email}</p>
+          <button className="btn btn-success " type="submit" onClick={submit}>SUBMIT</button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
